@@ -1,16 +1,16 @@
 <template>
   <div :class="styles.app">
-    <div :class="styles.nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <Header />
   </div>
 </template>
 
 <script>
 import styles from "./App.sass";
+import Header from "./views/Header/index";
 export default {
+  components: {
+    Header,
+  },
   data() {
     return {
       styles,

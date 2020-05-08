@@ -11,10 +11,10 @@ import styles from "./styles.module.sass";
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    HelloWorld
   },
   data: () => ({
-    styles,
-  }),
+    styles
+  })
 };
 </script>
