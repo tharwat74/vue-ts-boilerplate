@@ -1,19 +1,27 @@
 <template>
   <div :class="styles.wrapper">
-    <div :class="styles.navWrapper" @click="drawer = !drawer">
+    <div :class="styles.navWrapper" @click="drawer = true">
       <div :class="styles.nav" />
       <div :class="styles.nav" />
       <div :class="styles.nav" />
     </div>
-    <md-drawer :md-active.sync="drawer" :class="styles.drawer" md-swipeable>
+    <md-drawer
+      :md-active.sync="drawer"
+      :class="styles.drawer"
+      @close="drawer = false"
+      @open="drawer = true"
+    >
       <div
         :class="styles.drawerWrapper"
-        v-for="(item, x) in routes"
-        :key="{ x }"
+        @click="drawer = false"
+        v-for="(item, index) in routes"
+        v-bind:key="index"
       >
-        <router-link :to="item.value" :class="styles.home">{{
+        <router-link :to="item.value" :class="styles.home">
+          {{
           item.name
-        }}</router-link>
+          }}
+        </router-link>
       </div>
     </md-drawer>
     <span :class="styles.title" v-if="drawer">{{ title }}</span>
@@ -22,15 +30,16 @@
 
 <script>
 import styles from "./styles.module.sass";
-export default {
+import Vue from "vue";
+export default Vue.component("Header", {
   data: () => ({
     title: "Hello Wrold",
     styles,
-    drawer: null,
+    drawer: false,
     routes: [
       { name: "Home", value: "/" },
-      { name: "About", value: "/about" },
-    ],
-  }),
-};
+      { name: "About", value: "/about" }
+    ]
+  })
+});
 </script>

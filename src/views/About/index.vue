@@ -1,6 +1,6 @@
 <template>
   <div :class="styles.wrapper">
-    <div :class="styles.item" v-for="(item, x) in title" :key="{ x }">
+    <div :class="styles.item" v-for="(item, x) in title" v-bind:key="x">
       <h1>{{ item.name }}</h1>
     </div>
   </div>
@@ -14,9 +14,9 @@ export default {
       { name: "Hello" },
       { name: "form" },
       { name: "about" },
-      { name: "page" },
+      { name: "page" }
     ],
-    styles,
-  }),
+    styles
+  })
 };
 </script>
